@@ -1,9 +1,16 @@
+<%@ page import="servlets.tt1" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Hello</title>
+    <title>test</title>
 </head>
 <body>
-<h1>Current server time: <%=request.getAttribute("date")%></h1>
+<h1>Test</h1>
+<h2>
+    <%
+        tt1 ss=new tt1();
+        ss.check();
+    %>
+</h2>
 </body>
 </html>
