@@ -9,24 +9,67 @@
     <distributable/>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>/WEB-INF/context.xml</param-value>
+        <param-value>/WEB-INF/context.xml,/HeroesEntity.hbm.xml</param-value>
     </context-param>
 
     <servlet>
-        <servlet-name>timeWorker</servlet-name>
-        <servlet-class>servlets.TimeWorker</servlet-class>
+        <servlet-name>listOrder</servlet-name>
+        <servlet-class>servlets.order.ListOrderServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>timeWorker</servlet-name>
-        <url-pattern>/time</url-pattern>
+        <servlet-name>listOrder</servlet-name>
+        <url-pattern>/listOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>editCustomer</servlet-name>
+        <servlet-class>servlets.customer.EditCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editCustomer</servlet-name>
+        <url-pattern>/editCustomer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listCustomer</servlet-name>
+        <servlet-class>servlets.customer.listCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listCustomer</servlet-name>
+        <url-pattern>/listCustomer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addCustomer</servlet-name>
+        <servlet-class>servlets.customer.AddCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCustomer</servlet-name>
+        <url-pattern>/addCustomer</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>servlets.testServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>edit</servlet-name>
+        <servlet-class>servlets.good.EditGoodServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>edit</servlet-name>
+        <url-pattern>/edit</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>add</servlet-name>
-        <servlet-class>servlets.AddServlet</servlet-class>
+        <servlet-class>servlets.good.AddGoodServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>add</servlet-name>
         <url-pattern>/add</url-pattern>
@@ -34,7 +77,7 @@
 
     <servlet>
         <servlet-name>list</servlet-name>
-        <servlet-class>servlets.ListServlet</servlet-class>
+        <servlet-class>servlets.good.ListGoodServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

@@ -1,6 +1,15 @@
 plugins {
     id 'java'
     id 'war'
+    id "org.sonarqube" version "3.1.1"
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "wildbober228_ServletsAndTomCat"
+        property "sonar.organization", "wildbober228"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
 
 group 'org.wildbober'
@@ -19,5 +28,11 @@ dependencies {
     compileOnly group: 'javax.servlet', name: 'jsp-api', version: '2.0'
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+
+//    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
+//    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.29.Final'
+//// https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager
+//    implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.29.Final'
+
 
 }
