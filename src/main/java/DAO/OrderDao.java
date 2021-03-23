@@ -1,6 +1,7 @@
 package DAO;
 
 import models.Customer;
+import models.Good;
 import models.Order;
 import utils.ConnectionData;
 
@@ -19,7 +20,8 @@ public class OrderDao {
             pst.setInt(1, 0);
             pst.setInt(2, FK_customer);
             pst.setInt(3, FK_good);
-            pst.setDate(4, (java.sql.Date) orderDate);
+            java.sql.Date sqlDate = new java.sql.Date(orderDate.getTime());
+            pst.setDate(4, sqlDate);
             pst.executeUpdate();
         }
         catch (SQLException ex) {
@@ -90,18 +92,18 @@ public class OrderDao {
     public Customer getCustomer(int idOrder) throws SQLException {
         Customer customer = null;
         try (Connection connection = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS)) {
-            String sql = " SELECT CreatedAt,nameCustomer,surname FROM shop_bd1.orders  " +
-                          " JOIN customers ON shop_bd1.customers.id = customerId ";
+            String sql = " SELECT CreatedAt,shop_bd1.customers.id,nameCustomer,surname FROM shop_bd1.orders  " +
+                          " JOIN customers ON shop_bd1.customers.id = shop_bd1.orders.customerId";
             //String sql = "SELECT nameCustomer, surname, discountId FROM shop_bd1.orders ON JOIN customers ON shop_bd1.customers.id = customerId WHERE shop_bd1.orders.id =" + idOrder;
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
 
             while (result.next()) {
-                int id = result.getInt("id");
-                String name = result.getString(2);
-                String surName = result.getString(3);
-                int FK_discount = result.getInt(4);
-                customer = new Customer(id, name,surName,FK_discount);
+                int id = result.getInt(2);
+                String name = result.getString(3);
+                String surName = result.getString(4);
+                //int FK_discount = result.getInt(4);
+                customer = new Customer(id, name,surName,1);
             }
 
         } catch (SQLException ex) {
@@ -109,6 +111,28 @@ public class OrderDao {
             throw ex;
         }
         return customer;
+    }
+
+    public Good getGood(int idOrder) throws SQLException {
+        Good good = null;
+        try (Connection connection = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS)) {
+            String sql = " SELECT shop_bd1.goods.id,goodName,goodPrice FROM shop_bd1.orders  " +
+                    " JOIN goods ON shop_bd1.goods.id = shop_bd1.orders.goodId";
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            while (result.next()) {
+                int id = result.getInt(1);
+                String name = result.getString(2);
+                float price = result.getFloat(3);
+                good = new Good(id, name,1,4);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
+        return good;
     }
 
 

@@ -27,6 +27,23 @@ public class GoodDao {
         }
     }
 
+    public void addGood(Good good) throws SQLException {
+
+        try{
+            Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);
+            String sql = "INSERT INTO shop_bd1.goods (id,goodName,goodCount,goodPrice) VALUES (?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, 0);
+            pst.setString(2, good.getGoodName());
+            pst.setInt(3, good.getGoodCount());
+            pst.setFloat(4, good.getGoodPrice());
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void updateCustomer(String goodName, String goodCount, String goodPrice,String idGood){
         try{
             Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);

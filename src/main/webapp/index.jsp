@@ -20,6 +20,7 @@
     <button class="w3-btn w3-hover-green w3-round-large" onclick="location.href='/listCustomer'">listCustomer</button>
   </div>
   <button class="w3-btn w3-hover-green w3-round-large" onclick="location.href='/listOrder'">listOrder</button>
+  <button class="w3-btn w3-hover-green w3-round-large" onclick="location.href='/addOrder'">addOrder</button>
 </div>
 </body>
 </html>

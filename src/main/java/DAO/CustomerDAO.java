@@ -26,6 +26,23 @@ public class CustomerDAO {
         }
     }
 
+    public void addCustomer(Customer customer) throws SQLException {
+        try{
+            Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);
+            String sql = "INSERT INTO shop_bd1.customers (id,nameCustomer,surname,discountId) VALUES (?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, 0);
+            pst.setString(2, customer.getName());
+            pst.setString(3, customer.getSurName());
+            pst.setInt(4, customer.getDiscountFK());
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
     public void updateCustomer(String name, String surName, int FK_discount,int idCustomer){
         try{
             Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);

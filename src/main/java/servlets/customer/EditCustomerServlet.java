@@ -17,7 +17,6 @@ import java.util.List;
 public class EditCustomerServlet extends HttpServlet {
 
     String id;
-    int fk_discount;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,11 +24,7 @@ public class EditCustomerServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
-          id = request.getParameter("id");
-//        String fk_s = request.getParameter("fk");
-//        fk_discount = Integer.parseInt(fk_s);
-//
-//        request.setAttribute("fk_discount", fk_discount);
+        id = request.getParameter("id");
         DiscountDao dao = new DiscountDao();
         List<Discount> listDiscount = null;
         try {
@@ -52,7 +47,6 @@ public class EditCustomerServlet extends HttpServlet {
         int fk = Integer.parseInt(customerFK);
         int _id = Integer.parseInt(id.trim());
         dao.updateCustomer(customerName,customerSurName,fk,_id);
-
         req.setAttribute("customerName", customerName);
         doGet(req, resp);
     }

@@ -13,6 +13,24 @@
     </context-param>
 
     <servlet>
+        <servlet-name>editOrder</servlet-name>
+        <servlet-class>servlets.order.EditOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editOrder</servlet-name>
+        <url-pattern>/editOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addOrder</servlet-name>
+        <servlet-class>servlets.order.AddOrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addOrder</servlet-name>
+        <url-pattern>/addOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>listOrder</servlet-name>
         <servlet-class>servlets.order.ListOrderServlet</servlet-class>
     </servlet>
