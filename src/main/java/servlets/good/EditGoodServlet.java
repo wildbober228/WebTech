@@ -1,6 +1,7 @@
 package servlets.good;
 
 import utils.ConnectionData;
+import utils.DataHelper;
 
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -42,11 +43,17 @@ public class EditGoodServlet extends HttpServlet {
             String sql = "UPDATE shop_bd1.goods SET goodName = ? , goodCount = ? , goodPrice = ? WHERE id = ?" ;
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, goodName);
-            pst.setInt(2, Integer.parseInt(goodCount));
-            pst.setFloat(3, Float.parseFloat(goodPrice));
-            int _id = Integer.parseInt(id.trim());
+            pst.setInt(2, DataHelper.ParseToInt(goodCount));
+            pst.setFloat(3, DataHelper.ParseToFloat(goodPrice));
+            int _id = DataHelper.ParseToInt(id);
             pst.setInt(4, _id);
-            pst.executeUpdate();
+
+            if (DataHelper.ParseToInt(goodCount) != -1 && DataHelper.ParseToFloat(goodPrice) != -1 && DataHelper.ParseToInt(id) != -1) {
+                pst.executeUpdate();
+                req.setAttribute("goodName", goodName);
+            } else {
+                req.setAttribute("goodName", "Error");
+            }
 
         }
         catch (SQLException ex) {

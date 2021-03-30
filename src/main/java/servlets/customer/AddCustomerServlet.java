@@ -4,6 +4,7 @@ import DAO.CustomerDAO;
 import DAO.DiscountDao;
 import models.Discount;
 import utils.ConnectionData;
+import utils.DataHelper;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,9 +45,13 @@ public class AddCustomerServlet extends HttpServlet {
         try {
             CustomerDAO dao = new CustomerDAO();
 
-            int fk = Integer.parseInt(customerFK);
+            int fk = DataHelper.ParseToInt(customerFK);
 
-            dao.addCustomer(customerName,customerSurName,fk);
+            if (fk != -1) {
+                dao.addCustomer(customerName,customerSurName,fk);
+            } else {
+                req.setAttribute("customerName", "Error");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import utils.ConnectionData;
+import utils.DataHelper;
 
 public class AddGoodServlet extends HttpServlet {
 
@@ -30,15 +31,21 @@ public class AddGoodServlet extends HttpServlet {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, 0);
             pst.setString(2, goodName);
-            pst.setInt(3, Integer.parseInt(goodCount));
-            pst.setFloat(4, Float.parseFloat(goodPrice));
-            pst.executeUpdate();
+            pst.setInt(3, DataHelper.ParseToInt(goodCount));
+            pst.setFloat(4, DataHelper.ParseToFloat(goodPrice));
+            if (DataHelper.ParseToInt(goodCount) != -1 && DataHelper.ParseToFloat(goodPrice) != -1) {
+                pst.executeUpdate();
+                req.setAttribute("goodName", goodName);
+            } else {
+                req.setAttribute("goodName", "Error");
+            }
+
 
         }
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-        req.setAttribute("goodName", goodName);
+
         doGet(req, resp);
     }
 

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class EditOrderServlet extends HttpServlet {
@@ -60,17 +61,24 @@ public class EditOrderServlet extends HttpServlet {
         String fkCustomer = req.getParameter("FK_customer");
         String date = req.getParameter("orderDate");
         try {
-            int FkGood = Integer.parseInt(fkGood.trim());
-            int FkCustomer = Integer.parseInt(fkCustomer.trim());
+            int FkGood = DataHelper.ParseToInt(fkGood);
+            int FkCustomer = DataHelper.ParseToInt(fkCustomer);
             OrderDao orderDao = new OrderDao();
             int _id = Integer.parseInt(id.trim());
-            orderDao.updateOrder(DataHelper.StringToDate(date),FkCustomer, FkGood, _id);
+            Date date1 = DataHelper.StringToDate(date);
+            if(date1 != null && FkCustomer != -1 && FkGood !=-1) {
+                orderDao.updateOrder(date1, FkCustomer, FkGood, _id);
+                req.setAttribute("order", date);
+            }
+            else{
+                req.setAttribute("order", "Error");
+            }
 
         } catch (ParseException e) {
             e.printStackTrace();
             throw new ServletException(e);
         }
-        req.setAttribute("order", date);
+
         doGet(req, resp);
     }
 

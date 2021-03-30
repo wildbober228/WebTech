@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'war'
     id "org.sonarqube" version "3.1.1"
+
 }
 
 sonarqube {
@@ -9,18 +10,33 @@ sonarqube {
         property "sonar.projectKey", "wildbober228_ServletsAndTomCat"
         property "sonar.organization", "wildbober228"
         property "sonar.host.url", "https://sonarcloud.io"
+
     }
 }
+
+//compileJava.options.encoding = 'UTF-8'
+//
+//tasks.withType(JavaCompile) {
+//    options.encoding = 'UTF-8'
+//}
+
+//tasks.withType(Test) {
+//    scanForTestClasses = false
+//    include "**/*MyStepdefs.class" // whatever Ant pattern matches your test class files
+//}
 
 group 'org.wildbober'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+
 }
 
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    //testCompile("junit:junit")
+    //testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/javax.servlet/servlet-api
     compileOnly group: 'javax.servlet', name: 'servlet-api', version: '3.0-alpha-1'
@@ -28,6 +44,10 @@ dependencies {
     compileOnly group: 'javax.servlet', name: 'jsp-api', version: '2.0'
 // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.23'
+// https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '6.10.0'
+// https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '6.10.0'
 
 //    // https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 //    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.4.29.Final'

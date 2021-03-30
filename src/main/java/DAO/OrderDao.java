@@ -29,6 +29,18 @@ public class OrderDao {
         }
     }
 
+    public void deleteOrder(int id){
+        try{
+            Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);
+            String sql = "DELETE FROM shop_bd1.orders WHERE shop_bd1.orders.id = "+id;
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void updateOrder(Date orderDate, int FK_customer, int FK_good,int idOrder){
         try{
             Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);

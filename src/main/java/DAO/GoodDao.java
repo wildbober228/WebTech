@@ -27,6 +27,18 @@ public class GoodDao {
         }
     }
 
+    public void deleteGood(int id){
+        try{
+            Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);
+            String sql = "DELETE FROM shop_bd1.goods WHERE shop_bd1.goods.id = "+id;
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void addGood(Good good) throws SQLException {
 
         try{

@@ -35,6 +35,16 @@
                 out.println("<td><p>" + s.getGoodCount() + "</p></td>");
                 out.println("<td><p>" + s.getGoodPrice() + "</p></td>");
                 out.println("<td><p><a href=" + "'/edit?id=   " + s.getId() + " ' >Редактировать</a></p></td>");
+                out.println("<td><p>");
+                out.println("<form action=\"/deleteGood\" method=\"POST\">");
+                out.println("<div>");
+                out.println("<input type = \"hidden\" value=\""+s.getId()+"\" name=\"id\">");
+                out.println("</div>");
+                out.println("<div>");
+                out.println("<button>Удалить</button>");
+                out.println("</div>");
+                out.println("</form>");
+                out.println("</p></td>");
                 out.println("</tr>");
 
             }

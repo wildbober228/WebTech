@@ -46,6 +46,16 @@
                     out.println("<td><p>" + goodDao.getById(s.getFK_good()).getGoodName()  + "</p></td>");
                     out.println("<td><p>" + goodDao.getById(s.getFK_good()).getGoodPrice()  + "</p></td>");
                     out.println("<td><p><a href=" + "'/editOrder?id=   " + s.getId() + " ' >Редактировать</a></p></td>");
+                    out.println("<td><p>");
+                    out.println("<form action=\"/deleteOrder\" method=\"POST\">");
+                    out.println("<div>");
+                    out.println("<input type = \"hidden\" value=\""+s.getId()+"\" name=\"id\">");
+                    out.println("</div>");
+                    out.println("<div>");
+                    out.println("<button>Удалить</button>");
+                    out.println("</div>");
+                    out.println("</form>");
+                    out.println("</p></td>");
                     out.println("</tr>");
 
                 }

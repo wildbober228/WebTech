@@ -42,6 +42,18 @@ public class CustomerDAO {
         }
     }
 
+    public void deleteCustomer(int id){
+        try{
+            Connection con = DriverManager.getConnection(ConnectionData.URL, ConnectionData.USER, ConnectionData.PASS);
+            String sql = "DELETE FROM shop_bd1.customers WHERE shop_bd1.customers.id = "+id;
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.executeUpdate();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
     public void updateCustomer(String name, String surName, int FK_discount,int idCustomer){
         try{
