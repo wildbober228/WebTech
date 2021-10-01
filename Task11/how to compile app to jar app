@@ -1,0 +1,6 @@
+Выбираем по этому пути наш класс Main
+Project Structure -> Artifacts -> Jar -> From modules with dependencies
+Затем создаем файл Jar с помощью пункта меню Build -> Build Artifact
+По умолчанию все библиотеки будут извлечены в целевой Jar.
+Сам исполняемый файл будет сгенерирован в директории out -> artifacts вашего проекта
+И теперь исполняемый файл можно запускать через команду java -jar myFileName.jar
