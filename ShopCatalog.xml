@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShopCatalogue>
+
+    <Fridge>
+	<id>0</id>
+        <cost>1000</cost>
+        <usefulVolume>50</usefulVolume>
+        <color>BLUE</color>
+        <width>50</width>
+        <height>150</height>
+    </Fridge>
+
+    <Fridge>
+	<id>1</id>
+        <cost>1500</cost>
+        <usefulVolume>75</usefulVolume>
+        <color>RED</color>
+        <width>50</width>
+        <height>150</height>
+    </Fridge>
+
+    <Fridge>
+	<id>2</id>
+        <cost>2000</cost>
+        <usefulVolume>100</usefulVolume>
+        <color>GREEN</color>
+        <width>50</width>
+        <height>250</height>
+    </Fridge>
+
+    <Kettle>
+        <id>0</id>
+        <cost>100</cost>
+        <volume>25</volume>
+    </Kettle>
+
+    <Kettle>
+        <id>1</id>
+        <cost>150</cost>
+        <volume>50</volume>
+    </Kettle>
+
+    <Kettle>
+        <id>2</id>
+        <cost>200</cost>
+        <volume>75</volume>
+    </Kettle>
+
+    <Kettle>
+        <id>3</id>
+        <cost>300</cost>
+        <volume>100</volume>
+    </Kettle>
+
+
+</ShopCatalogue>
