@@ -13,6 +13,60 @@
     </context-param>
 
     <servlet>
+        <servlet-name>closeSession</servlet-name>
+        <servlet-class>servlets.user.closeSession</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>closeSession</servlet-name>
+        <url-pattern>/closeSession</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>editApartment</servlet-name>
+        <servlet-class>servlets.apartment.editApartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editApartment</servlet-name>
+        <url-pattern>/editApartment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>bookApartment</servlet-name>
+        <servlet-class>servlets.apartment.bookApartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bookApartment</servlet-name>
+        <url-pattern>/bookApartment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loginUser</servlet-name>
+        <servlet-class>servlets.user.loginUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginUser</servlet-name>
+        <url-pattern>/loginUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registerUser</servlet-name>
+        <servlet-class>servlets.user.registerUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerUser</servlet-name>
+        <url-pattern>/registerUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listApartment</servlet-name>
+        <servlet-class>servlets.apartment.listApartmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>listApartment</servlet-name>
+        <url-pattern>/listApartment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>editOrder</servlet-name>
         <servlet-class>servlets.order.EditOrderServlet</servlet-class>
     </servlet>
